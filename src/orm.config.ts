@@ -1,12 +1,15 @@
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-export const config: TypeOrmModule = {
+export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: '0.0.0.0',
   port: 5432,
   username: 'postgres',
   password: 'root',
   database: 'sherazkhan',
-  entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
+  entities: ['dist/**/*.entity{.ts,.js}'],
+  logging: true,
 };
+
+export const dateSource = new DataSource(dataSourceOptions);
